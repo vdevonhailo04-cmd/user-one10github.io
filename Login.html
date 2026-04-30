@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Programming Learning Center</title>
+    <link rel="stylesheet" href="CSS_Front.css">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .auth-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+        .auth-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+        .auth-btn {
+            width: 100%;
+            border: none;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        .toggle-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        .toggle-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hidden {
+    display: none !important;
+}
+    
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 12px; 
+    padding-right: 65px; 
+    border: 2px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1em;
+    transition: var(--transition);
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85em;
+    z-index: 2; 
+}
+
+.password-container input:focus {
+    border-color: var(--primary-color);
+}
+    </style>
+</head>
+<body>
+   <div class="auth-container">
+    <div class="auth-card" id="login-form">
+        <h2>Welcome Back</h2>
+        <form onsubmit="handleAuth(event, 'login')">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" required placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <div class="password-container">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePasswordVisibility('login-password')">Show</button>
+                </div>
+            </div>
+            
+            <button type="submit" class="explore-btn auth-btn">Login</button>
+        </form>
+        <div class="toggle-link">
+            Don't have an account? <a href="#" onclick="toggleAuth()">Register here</a>
+        </div>
+    </div>
+
+    <div class="auth-card hidden" id="register-form">
+        <h2>Create Account</h2>
+        <form onsubmit="handleAuth(event, 'register')">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="reg-name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="reg-email" required placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="password-container">
+                    <input type="password" id="reg-password" required placeholder="Create password">
+                    <button type="button" class="toggle-btn" onclick="togglePasswordVisibility('reg-password')">Show</button>
+                </div>
+            </div>
+            <button type="submit" class="explore-btn auth-btn">Register</button>
+        </form>
+        <div class="toggle-link">
+            Already have an account? <a href="#" onclick="toggleAuth()">Login here</a>
+        </div>
+    </div>
+</div>
+
+    <script src="JS_Auth.js"></script>
+</body>
+</html>

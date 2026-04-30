@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JavaScript - Programming Learning Center</title>
+    <link rel="stylesheet" href="CSS_Front.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="collapse-btn" onclick="collapseSidebar()">☰</button>
+            <span class="title">Programming Learning Center</span>
+        </div>
+
+        <a href="index.html" class="nav-link" title="Home">
+            <span class="icon">📊</span>
+            <span class="text">Home</span>
+        </a>
+
+        <a href="page_html.html" class="nav-link" title="HTML">
+            <span class="icon"><i class="devicon-html5-plain-wordmark colored"></i></span>
+            <span class="text">HTML</span>
+        </a>
+
+        <a href="page_css.html" class="nav-link" title="CSS">
+            <span class="icon"><i class="devicon-css3-plain-wordmark colored"></i></span>
+            <span class="text">CSS</span>
+        </a>
+
+        <a href="page_JS.html" class="nav-link active" data-page="javascript" title="JS">
+            <span class="icon"><i class="devicon-javascript-plain colored"></i></span>
+            <span class="text">JavaScript</span>
+        </a>
+
+        <a href="page_java.html" class="nav-link" title="Java">
+            <span class="icon"><i class="devicon-java-plain-wordmark colored"></i></span>
+            <span class="text">Java</span>
+        </a>
+
+        <a href="page_php.html" class="nav-link" title="PHP">
+            <span class="icon"><i class="devicon-php-plain colored"></i></span>
+            <span class="text">PHP</span>
+        </a>
+
+        <a href="page_C.html" class="nav-link" title="C#">
+            <span class="icon"><i class="devicon-csharp-plain-wordmark colored"></i></span>
+            <span class="text">C#</span>
+        </a>
+    </div>
+
+     <main class="main-wrapper" id="main-content">
+         <header class="top-nav">
+            <div class="right-section">
+                <button class="profile-btn" onclick="openProfileModal()">
+                    <i class="fas fa-user-circle"></i> Profile
+                </button>
+                <button class="logout-btn" onclick="handleLogout()" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+    </main>
+
+  <!-- Profile Modal - PROFESSIONAL VERSION -->
+<div id="profileModal" class="modal">
+    <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+            <div class="modal-title">
+                <i class="fas fa-palette"></i>
+                <h2>🎨 Customize Your Theme</h2>
+            </div>
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+        </div>
+
+        <!-- Description -->
+        <div class="modal-description">
+            <p><strong>Personalize your learning experience!</strong> Change colors to match your style. 
+            Changes save automatically and apply across all pages.</p>
+        </div>
+
+        <!-- Color Pickers -->
+        <div class="color-section">
+            <div class="color-group">
+                <label class="color-label">
+                    <i class="fas fa-circle"></i>
+                    <span>Primary Color</span>
+                    <small>Affects buttons, highlights, active states</small>
+                </label>
+                <input type="color" id="primaryColor" onchange="updateTheme()">
+                <div class="color-preview" id="primaryPreview"></div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">
+                    <i class="fas fa-square"></i>
+                    <span>Secondary Color</span>
+                    <small>Hover effects, secondary buttons</small>
+                </label>
+                <input type="color" id="secondaryColor" onchange="updateTheme()">
+                <div class="color-preview" id="secondaryPreview"></div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">
+                    <i class="fas fa-star"></i>
+                    <span>Accent Color</span>
+                    <small>Tags, icons, special highlights</small>
+                </label>
+                <input type="color" id="accentColor" onchange="updateTheme()">
+                <div class="color-preview" id="accentPreview"></div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">
+                    <i class="fas fa-palette"></i>
+                    <span>Background</span>
+                    <small>Page background color</small>
+                </label>
+                <input type="color" id="bgColor" onchange="updateTheme()">
+                <div class="color-preview" id="bgPreview"></div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Card Color</span>
+                    <small>Cards, modals, content boxes</small>
+                </label>
+                <input type="color" id="cardColor" onchange="updateTheme()">
+                <div class="color-preview" id="cardPreview"></div>
+            </div>
+        </div>
+
+        <!-- Live Preview -->
+        <div class="preview-section">
+            <h3>📱 Live Preview</h3>
+            <div class="preview-cards">
+                <div class="preview-sidebar">
+                    <div class="preview-nav-item active">
+                        <i class="fas fa-home"></i> Home
+                    </div>
+                    <div class="preview-nav-item">
+                        <i class="fas fa-code"></i> HTML
+                    </div>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-card">
+                        <h4>Beautiful Design</h4>
+                        <p>Your changes apply instantly to sidebar, cards, buttons & more!</p>
+                        <button class="preview-btn">Explore →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="save-btn" onclick="saveTheme()">
+                <i class="fas fa-save"></i> Save Theme
+            </button>
+            <button class="reset-btn" onclick="resetTheme()">
+                <i class="fas fa-undo"></i> Reset to Default
+            </button>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <nav class="content-nav">
+            <button onclick="goBack()" class="back-btn">← Back to Home</button>
+        </nav>
+
+        <header class="content-header js-content-header" style="border-left-color: #F7DF1E;">
+            <h1><i class="devicon-javascript-plain colored"> JavaScript</h1>
+            <p>Make your websites interactive and dynamic</p>
+        </header>
+
+        <main class="content-main">
+            <section class="content-section" data-section="what-is-js">
+                <h2>What is JavaScript?</h2>
+                <p>
+                    JavaScript is a programming language that enables interactive web pages. It's an essential 
+                    part of web applications and can be used on both client-side and server-side (Node.js).
+                </p>
+                <p>
+                    JavaScript runs in the browser and allows you to manipulate HTML, respond to user actions, and 
+                    create dynamic content without requiring a page reload.
+                </p>
+            </section>
+
+            <section class="content-section" data-section="js-basics">
+                <h2>JavaScript Basics</h2>
+                <div class="code-block">
+                    <pre><code>// Variables
+let name = "John";
+const age = 25;
+var city = "New York";
+
+// Functions
+function greet(person) {
+    return "Hello, " + person;
+}
+
+// Arrays
+let fruits = ["apple", "banana", "orange"];
+
+// Objects
+let person = {
+    name: "Alice",
+    age: 30,
+    city: "Paris"
+};
+
+// Conditional
+if (age > 18) {
+    console.log("Adult");
+}</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">📋 Copy Code</button>
+                </div>
+            </section>
+
+            <section class="content-section" data-section="js-concepts">
+                <h2>JavaScript Concepts</h2>
+                <ul class="concept-list">
+                    <li><strong>Variables:</strong> Store data using let, const, or var</li>
+                    <li><strong>Data Types:</strong> String, Number, Boolean, Array, Object, null, undefined</li>
+                    <li><strong>Functions:</strong> Reusable blocks of code - <code>function myFunc() { }</code></li>
+                    <li><strong>DOM Manipulation:</strong> Change HTML content dynamically using DOM methods</li>
+                    <li><strong>Event Handling:</strong> Respond to user interactions (click, submit, etc.)</li>
+                    <li><strong>Async/Await:</strong> Handle asynchronous operations cleanly</li>
+                    <li><strong>Promises:</strong> Handle operations that will complete later</li>
+                    <li><strong>ES6+:</strong> Modern JavaScript features (arrow functions, destructuring, etc.)</li>
+                </ul>
+            </section>
+
+            <section class="content-section" data-section="js-methods">
+                <h2>Common Methods</h2>
+                <div class="tags-table">
+                    <div class="tag-item">
+                        <strong>getElementById()</strong>
+                        <p>Select element by ID</p>
+                        <small>Example: <code>document.getElementById("id")</code></small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>querySelector()</strong>
+                        <p>Select element by selector</p>
+                        <small>Example: <code>document.querySelector(".class")</code></small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>addEventListener()</strong>
+                        <p>Attach event listener</p>
+                        <small>Example: <code>element.addEventListener('click', func)</code></small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>setTimeout()</strong>
+                        <p>Execute after delay in milliseconds</p>
+                        <small>Example: <code>setTimeout(func, 1000)</code></small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>forEach()</strong>
+                        <p>Loop through array elements</p>
+                        <small>Example: <code>arr.forEach(item => {...})</code></small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>fetch()</strong>
+                        <p>Make HTTP requests</p>
+                        <small>Example: <code>fetch(url).then(res => res.json())</code></small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" data-section="interactive-demo">
+                <h2>Interactive JavaScript Demo</h2>
+                <div class="interactive-demo">
+                    <h3>String Manipulation Playground</h3>
+                    <label>Enter Text:</label>
+                    <input type="text" class="demo-input" id="textInput" value="Hello JavaScript" placeholder="Enter your text">
+                    
+                    <div style="margin: 10px 0;">
+                        <button onclick="manipulateText('uppercase')" style="background: var(--secondary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; margin: 5px; font-weight: bold;">UPPERCASE</button>
+                        <button onclick="manipulateText('lowercase')" style="background: var(--secondary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; margin: 5px; font-weight: bold;">lowercase</button>
+                        <button onclick="manipulateText('reverse')" style="background: var(--secondary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; margin: 5px; font-weight: bold;">Reverse</button>
+                        <button onclick="manipulateText('length')" style="background: var(--secondary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; margin: 5px; font-weight: bold;">Length</button>
+                    </div>
+                    
+                    <div class="demo-preview" id="demoPreview">
+                        Result will appear here
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" data-section="practice">
+                <h2>Practice Challenges</h2>
+                <div class="tags-table">
+                    <div class="tag-item">
+                        <strong>Challenge 1: DOM Manipulation</strong>
+                        <p>Create a button that changes text and color when clicked</p>
+                        <small>Difficulty: ⭐ Easy</small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Challenge 2: Todo List</strong>
+                        <p>Build a todo list with add and delete functionality</p>
+                        <small>Difficulty: ⭐⭐ Medium</small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Challenge 3: API Integration</strong>
+                        <p>Fetch data from a public API and display it on the page</p>
+                        <small>Difficulty: ⭐⭐ Medium</small>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Challenge 4: Build a Game</strong>
+                        <p>Create a simple game like Rock-Paper-Scissors or Tic-Tac-Toe</p>
+                        <small>Difficulty: ⭐⭐⭐ Hard</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section resources">
+                <h2>📚 Learning Resources</h2>
+                <div class="resource-links">
+                    <a href="https://www.w3schools.com/js/" target="_blank" class="resource-btn">
+                        🌐 W3Schools JavaScript
+                    </a>
+                    <a href="https://www.geeksforgeeks.org/javascript/" target="_blank" class="resource-btn">
+                        📖 GeeksforGeeks JavaScript
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="resource-btn">
+                        🔗 MDN JavaScript
+                    </a>
+                    <a href="https://javascript.info/" target="_blank" class="resource-btn">
+                        ✨ JavaScript.info
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Programming Learning Center. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="JS_Front.js"></script>
+        
+</body>
+</html>
